@@ -33,4 +33,11 @@ class UserTest < ActiveSupport::TestCase
     @user.email.length <= 255
     assert_not @user.valid?
   end
+
+  test "is_a_valid_email" do
+  	@user.email = "ez"
+    @user.email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+    assert_not @user.valid?
+  end
+
 end
