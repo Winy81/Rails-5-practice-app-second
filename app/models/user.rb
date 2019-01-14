@@ -6,4 +6,5 @@ class User < ApplicationRecord
     validates(:email, length: { minimum: 8 })
     validates(:email, length: { maximum: 255 })
     validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+    validates(:email, uniqueness:{ case_sensitive: false })
 end
