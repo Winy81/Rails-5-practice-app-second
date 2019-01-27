@@ -13,8 +13,15 @@ module SessionsHelper
 
   # Returns the current logged-in user (if any).
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find_by(id: session[:user_id])
+    if (user_id = session[:user_id]) #this is like if the session[:user_id] exits set the user_id fot that's value
+      @current_user ||= User.find_by(id: user_id)
+    }
+    elsif (user_id = cookies.signed[:user_id])#this is like if the cookies.session[:user_id] exits set the user_id fot that's value
+      user = User.find_by(id: user_id)
+      if user && user.authenticated?(cookies[:remember_token])
+        log_in user
+        @current_user = user
+      end
     end
   end
 
