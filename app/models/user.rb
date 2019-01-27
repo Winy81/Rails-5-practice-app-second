@@ -13,14 +13,14 @@ class User < ApplicationRecord
     validates(:password, presence: true, length: { minimum: 5 })
 
     # Returns the hash digest of the given string.
-  def User.digest(string) #for test as a test user from pull out test/fixtures/users.yml
+  def self.digest(string) #for test as a test user from pull out test/fixtures/users.yml
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
   # Returns a random token.
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
