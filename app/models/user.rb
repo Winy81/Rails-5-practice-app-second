@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates(:email, uniqueness:{ case_sensitive: false })
     has_secure_password
-    validates(:password, presence: true, length: { minimum: 5 })
+    validates(:password, presence: true, length: { minimum: 5 }, allow_nil: true)
 
     # Returns the hash digest of the given string.
   def self.digest(string) #for test as a test user from pull out test/fixtures/users.yml
