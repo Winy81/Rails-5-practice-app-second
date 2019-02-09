@@ -17,4 +17,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'title', 'Sign up | Ruby on Rails Tutorial Sample App'
   end
+
+  test "should not allow the admin attribute to be edited via the web" do
+    log_in_as(@other_user)
+    assert_not @other_user.admin?
+    patch user_path(@other_user), params: {
+                                    user: { password:              "testpass",
+                                            password_confirmation: "testpass",
+                                            admin: true } }
+    assert_not @other_user.admin?
+  end
+
 end
