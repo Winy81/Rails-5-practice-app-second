@@ -8,12 +8,12 @@
 
 #Admin user created for me
 
-User.create!(name: AdamAdmin
-			 email: adam@adam.com
-			 password: "pass"
-			 password_confirmation: "pass"
-			 admin: true
-			 activated: true
+User.create!(name: "AdamAdmin",
+			 email: "adam@adam.com",
+			 password: "adamol",
+			 password_confirmation: "adamol",
+			 admin: true,
+			 activated: true,
 			 activated_at: Time.zone.now
 	 		)
 
@@ -24,7 +24,7 @@ User.create!(name: AdamAdmin
 		     	 email: "example-#{var.to_s}"+"@barmi.com",
 		     	 password: "pass"+var.to_s,
 		     	 password_confirmation: "pass"+var.to_s,
-		     	 admin: false
+		     	 admin: false,
 		     	 activated: true,
                  activated_at: Time.zone.now	
 		         )
