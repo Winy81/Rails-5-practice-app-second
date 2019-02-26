@@ -33,7 +33,12 @@ end
 
 users = User.order(:created_at).take(6)
 
-25.times do
-  content = Faker::Lorem.sentence(5)
+def content_count
+	('a'..'z').to_a.shuffle[0,20].join
+end
+
+15.times do
+  content = content_count
   users.each { |user| user.microposts.create!(content: content) }
 end
+
