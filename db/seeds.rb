@@ -37,7 +37,7 @@ def content_count
 	('a'..'z').to_a.shuffle[0,20].join
 end
 
-15.times do
+20.times do
   content = content_count
   users.each { |user| user.microposts.create!(content: content) }
 end
