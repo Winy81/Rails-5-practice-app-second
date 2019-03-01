@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyText
-  user: one
 
-two:
-  content: MyText
-  user: two
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= "Comment %{n}" %>
+  created_at: <%= 42.days.ago %>
+  user: michael
+<% end %>
