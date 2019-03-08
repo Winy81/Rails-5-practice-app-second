@@ -29,3 +29,16 @@ User.create!(name: "AdamAdmin",
                  activated_at: Time.zone.now	
 		         )
 end
+
+
+users = User.order(:created_at).take(6)
+
+def content_count
+	('a'..'z').to_a.shuffle[0,20].join
+end
+
+20.times do
+  content = content_count
+  users.each { |user| user.microposts.create!(content: content) }
+end
+
