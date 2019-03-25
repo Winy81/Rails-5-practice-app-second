@@ -9,8 +9,4 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", about_path
     assert_select "a[href=?]", contact_path
   end
-   test "proba" do
-    get about_path
-    assert_select "title", "About | Ruby on Rails Tutorial Sample App"
-   end
 end
